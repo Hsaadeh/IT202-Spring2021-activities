@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>html_form_basics</title>
+  </head>
+  
+  <body>
+    <h1>Form Basics</h1>
+    <form id="form1" name="form1">
+      <input type="text" id="text1" name="text1">
+
+      <input type="radio" id="red" name="radio1" name="color" value="red">
+        <label for="red">red</label>
+      <input type="radio" id="green" name="radio1" name="color" value="green">
+        <label for="green">green</label>
+      <input type="radio" id="blue" name="radio1" name="color" value="blue">
+        <label for="blue">blue</label>
+
+      <select id="select1" name="select1">
+        <option value=""></option>
+        <option value="Mon">Mon</option>
+        <option value="Wed">Wed</option>
+        <option value="Fri">Fri</option>
+      </select>
+
+      <textarea id="textarea1" name="textarea1" rows="1" cols="40">Please provide any additional feedback
+      </textarea>
+
+      
+    </form>
+
+
+
+
+    <p id="uptonSinclairQuote">
+        It is difficult to get a man to understand something, when his salary depends upon his not understanding it! -- Upton Sinclair
+    </p>
+
+
+    <script>
+      /**/
+      let text_input = document.querySelector(id="#text")
+      text_input.value = "Hadi Saadeh"
+
+
+    </script>
+  </body>
+</html>
