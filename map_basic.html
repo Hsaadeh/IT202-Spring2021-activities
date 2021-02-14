@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>map_basic</title>
+        <style type="text/css">
+
+        
+        </style>
+
+        <script>
+            let map; //to have acces to the variable outside the funcion
+
+            function initMap() {
+                map = new google.maps.Map(document.querySelector("map"), {
+                    center: {lat: 41.872135663820096, lng: -87.64801250624457}, //UIC SCE: 41.872135663820096, -87.64801250624457
+                    zoom: 11
+                });
+            } // Map intialized, location: UIC Student Center East, Zoom: ~City Level
+        </script>
+
+
+    </head>
+
+</html>
