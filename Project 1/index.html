@@ -5,28 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link >
+    <!-- <link rel="stylesheet" href="styles.css"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <style>
+        .screen {display: none;}
+    </style>
+    
 </head>
 <body>
-
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs" id="navbar">
         <li class="Home/Instructions">
-          <a class="nav-link active" aria-current="page" href="#">Home/Instructions</a>
+          <a class="nav-link" data-screen="Home/Instructions">Home/Instructions</a>
         </li>
         <li class="Form">
-          <a class="nav-link" href="#">Form</a>
+          <a class="nav-link" data-screen="Form">Form</a>
         </li>
         <li class="Data">
-          <a class="nav-link" href="#">Data</a>
+          <a class="nav-link" data-screen="Data">Data</a>
         </li>
-          <li class="Map">
-            <a class="nav-link" href="#">Map</a>
-          </li>
-          <li class="About">
-            <a class="nav-link" href="#">About</a>
-          </li>
-      </ul>
+        <li class="Map">
+          <a class="nav-link" data-screen="Map">Map</a>
+        </li>
+        <li class="About">
+          <a class="nav-link" data-screen="About">About</a>
+        </li>
+    </ul>
+
+    <!-- <ul class="nav nav-tabs">
+        <li class="Home/Instructions">
+          <a class="nav-link" data-screen="Home/Instructions" href="#">Home/Instructions</a>
+        </li>
+        <li class="Form">
+          <a class="nav-link" data-screen="Form" href="#">Form</a>
+        </li>
+        <li class="Data">
+          <a class="nav-link" data-screen="Data" href="#">Data</a>
+        </li>
+        <li class="Map">
+          <a class="nav-link" data-screen="Map" href="#">Map</a>
+        </li>
+        <li class="About">
+          <a class="nav-link" data-screen="About" href="#">About</a>
+        </li>
+    </ul> -->
 
       <div id="screen_content">
           <div class="screen" id="Home/Instructions">PLACE HOLDER FOR : INSTRUCTIONS</div>
@@ -36,8 +58,26 @@
           <div class="screen" id="About">PLACE HOLDER FOR : ABOUT</div>
       </div>
 
+    <script>
+        let NavBarAnchors = document.querySelectorAll("ul#navbar a");
 
-    <script src="app.js" async></script>
+        NavBarAnchors.forEach( (anchor) => {
+            anchor.addEventListener("click", (event) => {
+                document.querySelectorAll(".screen"),forEach( (screen) => {
+                    screen.style.display = "none";
+        });
+
+        let screen = event.target.getAttribute("data-screen");
+
+        let targetScreen = document.querySelectorAll("#" + screen);
+
+        targetScreen.style.display = "block";
+    })
+})
+
+    </script>
+
+    <!-- <script src="app.js" async></script> -->
     
 </body>
 </html>
