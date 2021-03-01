@@ -16,7 +16,7 @@
 <body>
     <ul class="nav nav-tabs" id="navbar">
         <li class="Home/Instructions">
-          <a class="nav-link" data-screen="Home/Instructions">Home/Instructions</a>
+          <a class="nav-link" data-screen="Home-Instructions">Home/Instructions</a>
         </li>
         <li class="Form">
           <a class="nav-link" data-screen="Form">Form</a>
@@ -51,7 +51,7 @@
     </ul> -->
 
       <div id="screen_content">
-          <div class="screen" id="Home/Instructions">PLACE HOLDER FOR : INSTRUCTIONS</div>
+          <div class="screen" id="Home-Instructions">PLACE HOLDER FOR : INSTRUCTIONS</div>
           <div class="screen" id="Form">PLACE HOLDER FOR : FORM</div>
           <div class="screen" id="Data">PLACE HOLDER FOR : DATA</div>
           <div class="screen" id="Map">PLACE HOLDER FOR : MAP</div>
@@ -63,18 +63,18 @@
 
         NavBarAnchors.forEach( (anchor) => {
             anchor.addEventListener("click", (event) => {
-                document.querySelectorAll(".screen"),forEach( (screen) => {
+                //console.log(":/")
+                document.querySelectorAll(".screen").forEach( (screen) => {
                     screen.style.display = "none";
-        });
+                });
+                
+                let screen = event.target.getAttribute("data-screen");
+                let targetScreen = document.querySelector("#" + screen); //changed recently
+                targetScreen.style.display = "block";
+            });
 
-        let screen = event.target.getAttribute("data-screen");
-
-        let targetScreen = document.querySelectorAll("#" + screen);
-
-        targetScreen.style.display = "block";
-    })
-})
-
+            //console.log("oof");
+        })
     </script>
 
     <!-- <script src="app.js" async></script> -->
