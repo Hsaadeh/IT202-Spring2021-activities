@@ -32,52 +32,39 @@
         </li>
     </ul>
 
-    <!-- <ul class="nav nav-tabs">
-        <li class="Home/Instructions">
-          <a class="nav-link" data-screen="Home/Instructions" href="#">Home/Instructions</a>
-        </li>
-        <li class="Form">
-          <a class="nav-link" data-screen="Form" href="#">Form</a>
-        </li>
-        <li class="Data">
-          <a class="nav-link" data-screen="Data" href="#">Data</a>
-        </li>
-        <li class="Map">
-          <a class="nav-link" data-screen="Map" href="#">Map</a>
-        </li>
-        <li class="About">
-          <a class="nav-link" data-screen="About" href="#">About</a>
-        </li>
-    </ul> -->
-
-      <div id="screen_content">
-          <div class="screen" id="Home-Instructions">PLACE HOLDER FOR : INSTRUCTIONS</div>
-          <div class="screen" id="Form">PLACE HOLDER FOR : FORM</div>
-          <div class="screen" id="Data">PLACE HOLDER FOR : DATA</div>
-          <div class="screen" id="Map">PLACE HOLDER FOR : MAP</div>
-          <div class="screen" id="About">PLACE HOLDER FOR : ABOUT</div>
-      </div>
+    <div id="screen_content">
+        <div class="screen" id="Home-Instructions">PLACE HOLDER FOR : INSTRUCTIONS</div>
+        <div class="screen" id="Form">PLACE HOLDER FOR : FORM</div>
+        <div class="screen" id="Data">PLACE HOLDER FOR : DATA</div>
+        <div class="screen" id="Map">PLACE HOLDER FOR : MAP</div>
+        <div class="screen" id="About">PLACE HOLDER FOR : ABOUT</div>
+    </div>
 
     <script>
-        let NavBarAnchors = document.querySelectorAll("ul#navbar a");
+        // let home_screen = document.querySelector("#Home-Instructions");
+        // home_screen.style.display = "block";
 
-        NavBarAnchors.forEach( (anchor) => {
-            anchor.addEventListener("click", (event) => {
-                //console.log(":/")
-                document.querySelectorAll(".screen").forEach( (screen) => {
-                    screen.style.display = "none";
-                });
+        // let NavBarAnchors = document.querySelectorAll("ul#navbar a");
+
+        // NavBarAnchors.forEach( (anchor) => {
+        //     anchor.addEventListener("click", (event) => {
+        //         //console.log(":/")
+        //         document.querySelectorAll(".screen").forEach( (screen) => {
+        //             screen.style.display = "none";
+        //         });
                 
-                let screen = event.target.getAttribute("data-screen");
-                let targetScreen = document.querySelector("#" + screen); //changed recently
-                targetScreen.style.display = "block";
-            });
+        //         let screen = event.target.getAttribute("data-screen");
+        //         let targetScreen = document.querySelector("#" + screen); //changed recently
+        //         targetScreen.style.display = "block";
+        //     });
 
-            //console.log("oof");
-        })
+        //     //console.log("oof");
+        // })
     </script>
 
-    <!-- <script src="app.js" async></script> -->
+    
+
+    <script src="app.js" async></script>
     
 </body>
 </html>
