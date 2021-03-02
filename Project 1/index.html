@@ -11,6 +11,7 @@
     <style>
         .screen {display: none;}
         #card {display: none;}
+        Form {padding: 10px;}
     </style>
     
 </head>
@@ -47,37 +48,27 @@
 
         <div class="screen" id="Form">
 
+          <label for="dropdown_community_options">Filter by Community:</label>
+          <select id="dropdown_community_options" name="dropdown_community_options"></select>
+          <button id="filter_search_community" type="button">Filter</button>
+
+          <form id="zip_code">
+            <label for="filter">Zip Code:</label>
+            <input type="text" id="zip_code_filter" name="filter">
+            <button id="filter_search_zip_code" type="button">Filter</button>
+          </form>
+
           <form id="id">
-            <label for="filter">ID:</label><br>
-            <input type="text" id="id_filter" name="filter"><br>
+            <label for="filter">ID:</label>
+            <input type="text" id="id_filter" name="filter">
             <button id="filter_search_id" type="button">Filter</button>
           </form>
 
           <form id="pin">
-            <label for="filter">ID:</label><br>
-            <input type="text" id="pin_filter" name="filter"><br>
+            <label for="filter">PIN:</label>
+            <input type="text" id="pin_filter" name="filter">
             <button id="filter_search_pin" type="button">Filter</button>
           </form>
-
-
-
-          <!-- <label for="cars">Choose a Community Area:</label>
-
-          <select name="Community_Areas" id="Community_Areas">
-            <option value="volvo">Placeholder1</option>
-            <option value="saab">Placeholder2</option>
-            <option value="mercedes">Placeholder3</option>
-            <option value="audi">Placeholder4</option>
-          </select>
-          <button id="search_community" type="button">Search</button>
-
-          <select name="property_status" id="property_status">
-            <option value="Owned by City">City Owned</option>
-            <option value="saab">Placeholder6</option>
-            <option value="mercedes">Placeholder7</option>
-            <option value="audi">Placeholder8</option>
-          </select>
-          <button id="search_ownership" type="button">Search</button> -->
 
         </div>
 
@@ -109,27 +100,6 @@
 
     </div>
 
-    <script>
-        // let home_screen = document.querySelector("#Home-Instructions");
-        // home_screen.style.display = "block";
-
-        // let NavBarAnchors = document.querySelectorAll("ul#navbar a");
-
-        // NavBarAnchors.forEach( (anchor) => {
-        //     anchor.addEventListener("click", (event) => {
-        //         //console.log(":/")
-        //         document.querySelectorAll(".screen").forEach( (screen) => {
-        //             screen.style.display = "none";
-        //         });
-                
-        //         let screen = event.target.getAttribute("data-screen");
-        //         let targetScreen = document.querySelector("#" + screen); //changed recently
-        //         targetScreen.style.display = "block";
-        //     });
-
-        //     //console.log("oof");
-        // })
-    </script>
 
     
 </body>
