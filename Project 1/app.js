@@ -28,7 +28,64 @@ let endpoint = "https://data.cityofchicago.org/resource/aksk-kvfp.json";
 
 let url = endpoint;
 
-let filter_button = document.querySelector("#filter_search");
+// Form search
+let filter_by_id_button = document.querySelector("#filter_search_id");
+let filter_by_pin_button = document.querySelector("#filter_search_pin");
+
+// id filter
+filter_by_id_button.addEventListener("click", (event) => {
+    let id = document.querySelector("#id_filter").value;
+    new_url = url + "?id=" + id;
+    fetch (new_url)
+        .then( (response) => {
+            return response.json()})
+        .then( (data) => {
+            // work with data
+            console.log(data);
+        });
+})
+
+// pin filter
+filter_by_pin_button.addEventListener("click", (event) => {
+    let pin = document.querySelector("#pin_filter").value;
+    new_url = url + "?pin=" + pin;
+    fetch (new_url)
+        .then( (response) => {
+            return response.json()})
+        .then( (data) => {
+            // work with data
+            console.log(data);
+        });
+})
+
+// // get the filter data 
+// filter_button.addEventListener("click", (event) => {
+//     let filter_value = document.querySelector("#filter").value;
+//     console.log(filter_value);
+
+//     let communities_unique = [];
+//     // communities_unique.sort();
+
+//     // use the filter 
+//     fetch (url)
+//         .then( (response) => {
+//             return response.json()})
+//         .then( (data) => {
+//         // work with data
+        
+//             data.forEach( (entry) => {
+//                 if(entry.includes(filter_value.values(entry))) {
+//                     console.log(entry);
+//                 } 
+                
+//                 // // if(!communities_unique.includes(entry["community_area_name"])) {
+//                 // //     communities_unique.push(entry["community_area_name"]);
+//                 // }
+//             });
+//         });
+
+//     // console.log(communities_unique);
+// })
 
 
 
