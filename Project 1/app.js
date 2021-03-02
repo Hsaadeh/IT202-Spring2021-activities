@@ -24,9 +24,43 @@ NavBarAnchors.forEach( (anchor) => {
 
 
 // The functionality for the Form: Allows the user to filter the data for the City-Owned Land Inventory
-let response = fetch("https://data.cityofchicago.org/resource/aksk-kvfp.json");
+let endpoint = "https://data.cityofchicago.org/resource/aksk-kvfp.json";
 
-let land_data = response.json();
+let url = endpoint;
 
-console.log(land_data);
+let communities_unique = [];
+communities_unique.sort();
+
+fetch (url)
+    .then( (response) => {
+        return response.json()})
+    .then( (data) => {
+        // work with data
+        
+        data.forEach( (entry) => {
+            if(!communities_unique.includes(entry["community_area_name"])) {
+                communities_unique.push(entry["community_area_name"]);
+            }
+        });
+    });
+
+// communities.forEach( (entry) => {
+//     if (!communities_unique.includes(community)) {
+//         communities_unique.push(community);
+//     }
+// });
+
+// let communities_unique = communities.filter( (community, index) => {
+//     return communities.indexOf(community) === index;
+// })
+
+
+console.log(communities_unique);
+
+
+//get land data
+
+//construct url by filtering data
+
 // end of the Form functionality
+
