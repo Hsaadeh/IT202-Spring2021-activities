@@ -28,6 +28,11 @@ let endpoint = "https://data.cityofchicago.org/resource/aksk-kvfp.json";
 
 let url = endpoint;
 
+let filter_button = document.querySelector("#filter_search");
+
+
+
+/*
 let communities_unique = [];
 communities_unique.sort();
 
@@ -44,18 +49,10 @@ fetch (url)
         });
     });
 
-// communities.forEach( (entry) => {
-//     if (!communities_unique.includes(community)) {
-//         communities_unique.push(community);
-//     }
-// });
-
-// let communities_unique = communities.filter( (community, index) => {
-//     return communities.indexOf(community) === index;
-// })
-
 
 console.log(communities_unique);
+*/
+
 
 
 //get land data
@@ -64,3 +61,8 @@ console.log(communities_unique);
 
 // end of the Form functionality
 
+
+// Data:
+// let filter_name = ;
+// let filter_value = ;
+// let search_value = document.querySelector("?" + filter_name + "=" + filter_value);

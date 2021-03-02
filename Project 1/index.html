@@ -10,6 +10,7 @@
     <script src="app.js" async></script>
     <style>
         .screen {display: none;}
+        #card {display: none;}
     </style>
     
 </head>
@@ -39,7 +40,16 @@
         </div>
 
         <div class="screen" id="Form">
-          <label for="cars">Choose a Community Area:</label>
+
+          <form>
+            <label for="filter">Filter Data By:</label><br>
+            <input type="text" id="filter" name="filter"><br>
+            <button id="filter_search" type="button">Filter</button>
+          </form>
+
+
+
+          <!-- <label for="cars">Choose a Community Area:</label>
 
           <select name="Community_Areas" id="Community_Areas">
             <option value="volvo">Placeholder1</option>
@@ -55,13 +65,13 @@
             <option value="mercedes">Placeholder7</option>
             <option value="audi">Placeholder8</option>
           </select>
-          <button id="search_ownership" type="button">Search</button>
+          <button id="search_ownership" type="button">Search</button> -->
 
         </div>
 
         <div class="screen" id="Data">
           PLACE HOLDER FOR : DATA
-          <div class="card" style="width: 18rem;">
+          <div class="card" style="width: 18rem;" id="card">
             <div class="card-header">
               Featured
             </div>
