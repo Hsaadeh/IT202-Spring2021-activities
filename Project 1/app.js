@@ -35,9 +35,9 @@ let filter_by_zip_button = document.querySelector("#filter_search_zip_code");
 let filter_by_community_button = document.querySelector("#filter_search_community");
 
 // Data:
-let blank_card = document.querySelector("#card");
+// let blank_card = document.querySelector("#card");
 
-let new_card = blank_card.cloneNode(true);
+// let new_card = blank_card.cloneNode(true);
 
 /*
         <div class="screen" id="Data">
@@ -69,41 +69,47 @@ function createCard(entry) {
     card.className = 'card';
     card.style = 'width: 18rem;';
 
-    // card header
-
+    
     // ul
     let card_ul = document.createElement('ul');
     card_ul.className = "list-group list-group-flush";
 
+    // card header
+    let header = document.createElement('button');
+    header.className = 'map_button';
+    header.type = 'button';
+    header.innerText = 'View on Map';
+    card_ul.appendChild(header);
+    
     // li elements
     let li_community = document.createElement('li');
     li_community.className = 'list-group-item';
     //li_community.id = entry['community_area_name'];
-    li_community.innerText = entry["community_area_name"];
+    li_community.innerText = "Community: " + entry["community_area_name"];
     card_ul.appendChild(li_community);
 
     let li_zip = document.createElement('li');
     li_zip.className = 'list-group-item';
     //li_community.id = entry['zip_code'];
-    li_zip.innerText = entry["zip_code"];
+    li_zip.innerText = "Zip Code: " + entry["zip_code"];
     card_ul.appendChild(li_zip);
 
     let li_pin = document.createElement('li');
     li_pin.className = 'list-group-item';
     //li_community.id = entry['pin'];
-    li_pin.innerText = entry["pin"];
+    li_pin.innerText = "Pin: " + entry["pin"];
     card_ul.appendChild(li_pin);
 
     let li_address = document.createElement('li');
     li_address.className = 'list-group-item';
     //li_community.id = entry['address'];
-    li_address.innerText = entry["address"];
+    li_address.innerText = "Address: " + entry["address"];
     card_ul.appendChild(li_address);
 
     let li_square_footage = document.createElement('li');
     li_square_footage.className = 'list-group-item';
     //li_community.id = entry['sq_ft'];
-    li_square_footage.innerText = entry["sq_ft"];
+    li_square_footage.innerText = "Square Footage: " + entry["sq_ft"];
     card_ul.appendChild(li_square_footage);
 
     card.appendChild(card_ul);
@@ -234,6 +240,11 @@ fetch(url)
     });
 
 
+// let map_button = document.querySelectorAll("#map_button");
+
+// map_button.addEventListener("click", (event) => {
+
+// })
 
 //get land data
 
@@ -244,8 +255,10 @@ fetch(url)
 
 // Data:
 
-let map_button = document.querySelector("#map_button");
+// let map_button = document.querySelector("#map_button");
 
-map_button.addEventListener("click", (event) => {
-    console.log("Map Displayed in Map Tab");
-})
+// map_button.addEventListener("click", (event) => {
+//     console.log("Map Displayed in Map Tab");
+// })
+
+// Map:
