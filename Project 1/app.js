@@ -31,6 +31,84 @@ let url = endpoint;
 // Form search
 let filter_by_id_button = document.querySelector("#filter_search_id");
 let filter_by_pin_button = document.querySelector("#filter_search_pin");
+let filter_by_zip_button = document.querySelector("#filter_search_zip_code");
+let filter_by_community_button = document.querySelector("#filter_search_community");
+
+// Data:
+let blank_card = document.querySelector("#card");
+
+let new_card = blank_card.cloneNode(true);
+
+/*
+        <div class="screen" id="Data">
+          PLACE HOLDER FOR : DATA
+          <div class="card" style="width: 18rem;" id="card">
+            <div class="card-header">
+              <button id="map_button" type="button">View on Map</button>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" id="community_area_name">community_area_name</li>
+              <li class="list-group-item" id="zip">zip code</li>
+              <li class="list-group-item" id="pin">pin</li>
+              <li class="list-group-item" id="address">address</li>
+              <li class="list-group-item" id="square_footage">square_footage</li>
+            </ul>
+          </div>
+*/
+
+/**************
+ * Create Card
+ **************/
+function createCard(entry) {
+    // seperator
+    let line_br = document.createElement('br');
+    document.querySelector("#Data").appendChild(line_br);
+
+    // card div
+    let card = document.createElement('div');
+    card.className = 'card';
+    card.style = 'width: 18rem;';
+
+    // card header
+
+    // ul
+    let card_ul = document.createElement('ul');
+    card_ul.className = "list-group list-group-flush";
+
+    // li elements
+    let li_community = document.createElement('li');
+    li_community.className = 'list-group-item';
+    //li_community.id = entry['community_area_name'];
+    li_community.innerText = entry["community_area_name"];
+    card_ul.appendChild(li_community);
+
+    let li_zip = document.createElement('li');
+    li_zip.className = 'list-group-item';
+    //li_community.id = entry['zip_code'];
+    li_zip.innerText = entry["zip_code"];
+    card_ul.appendChild(li_zip);
+
+    let li_pin = document.createElement('li');
+    li_pin.className = 'list-group-item';
+    //li_community.id = entry['pin'];
+    li_pin.innerText = entry["pin"];
+    card_ul.appendChild(li_pin);
+
+    let li_address = document.createElement('li');
+    li_address.className = 'list-group-item';
+    //li_community.id = entry['address'];
+    li_address.innerText = entry["address"];
+    card_ul.appendChild(li_address);
+
+    let li_square_footage = document.createElement('li');
+    li_square_footage.className = 'list-group-item';
+    //li_community.id = entry['sq_ft'];
+    li_square_footage.innerText = entry["sq_ft"];
+    card_ul.appendChild(li_square_footage);
+
+    card.appendChild(card_ul);
+    document.querySelector("#Data").appendChild(card);
+}
 
 // id filter
 filter_by_id_button.addEventListener("click", (event) => {
@@ -41,8 +119,10 @@ filter_by_id_button.addEventListener("click", (event) => {
             return response.json()
         })
         .then((data) => {
-            // work with data
-            console.log(data);
+            data.forEach((entry) => {
+                createCard(entry);
+            });
+
         });
 })
 
@@ -56,7 +136,43 @@ filter_by_pin_button.addEventListener("click", (event) => {
         })
         .then((data) => {
             // work with data
-            console.log(data);
+            data.forEach((entry) => {
+                createCard(entry);
+            });
+        });
+})
+
+// zip filter
+filter_by_zip_button.addEventListener("click", (event) => {
+    let zip_code = document.querySelector("#zip_code_filter").value;
+    new_url = url + "?zip_code=" + zip_code;
+    fetch(new_url)
+        .then((response) => {
+            return response.json()
+        })
+        .then((data) => {
+            // work with data
+            data.forEach((entry) => {
+                createCard(entry);
+            });
+        });
+})
+
+// Community Filter
+filter_by_community_button.addEventListener("click", (event) => {
+    let select = document.querySelector("#dropdown_community_options")
+    let community = select.options[select.selectedIndex].text;
+    //console.log(community);
+    new_url = url + "?community_area_name=" + community;
+    fetch(new_url)
+        .then((response) => {
+            return response.json()
+        })
+        .then((data) => {
+            // work with data
+            data.forEach((entry) => {
+                createCard(entry);
+            });
         });
 })
 
@@ -110,9 +226,9 @@ fetch(url)
 
         // dropdown menu for community names
         let dropdown_community_options_array = [];
-        dropdown_community_options_array.push("<option value='' selected></option>")
+        dropdown_community_options_array.push("<option value='' id='community_filter' selected></option>")
         communities_unique.forEach((element) => {
-            dropdown_community_options_array.push("<option value=''>" + element + "</option>");
+            dropdown_community_options_array.push("<option value='' id='community_filter'>" + element + "</option>");
         });
         document.getElementById("dropdown_community_options").innerHTML = dropdown_community_options_array.join();
     });
@@ -127,6 +243,9 @@ fetch(url)
 
 
 // Data:
-// let filter_name = ;
-// let filter_value = ;
-// let search_value = document.querySelector("?" + filter_name + "=" + filter_value);
+
+let map_button = document.querySelector("#map_button");
+
+map_button.addEventListener("click", (event) => {
+    console.log("Map Displayed in Map Tab");
+})
