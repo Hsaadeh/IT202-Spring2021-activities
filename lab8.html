@@ -34,6 +34,25 @@
 
       // create a function named areColliding that accepts two objects and returns a boolen based on collision
       // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+      function areColliding(object1, object2) {
+          let delta_x = [object1].x - [object2].x;
+          let delta_y = [object1].y - [object2].y;
+          let distance = Math.sqrt(delta_x * delta_x + delta_y * delta_y);
+          
+          if (distance < [object1].radius + [object2].radius) {
+              return true;
+              console.log('COLLISION!');   
+          }
+      }
+
+      let index = 0;
+
+      for (index; index < gameObjs.length; index++) {
+          let obj1 = gameObjs[index];
+          let obj2 = gameObjs[index + 1];
+
+          areColliding(obj1, obj2);
+      }
 
 
       // loop the objects to compare every pair
