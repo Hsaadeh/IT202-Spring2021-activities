@@ -22,14 +22,37 @@
         // array of colors to randomly be selected:
         let colors = ["red", "green", "blue", "yellow", "orange", "brown"];
 
+        // returns a random number when given a high and a low range
+        function RandomIntegerBetween(lowest, highest) {
+            return Math.floor(Math.random() * (highest - lowest) + lowest);
+        }
 
+
+        let RandomCircles = [];
+
+        function GenerateRandomCirlce(numOfCircles) {
+            for (let index = 0; index < numOfCircles; index++) {
+                let x = RandomIntegerBetween(0, 500);
+                let y = RandomIntegerBetween(0, 500);
+                let radius = 25;
+                let color = colors[RandomIntegerBetween(0,5)];
+
+                RandomCircles.push({x, y, radius, color});
+            }
+        }
+
+        GenerateRandomCirlce(25);
 
         // create objects per the lab activity
         let gameObjs = [];
         gameObjs.push({ x: 250, y: 250, radius: 25, color: "red" })
         gameObjs.push({ x: 275, y: 275, radius: 25, color: "green" })
         gameObjs.push({ x: 200, y: 300, radius: 25, color: "blue" })
-
+        
+        for (let index = 0; index < RandomCircles.length; index++) {
+            gameObjs.push(RandomCircles[index]);
+        }
+        
 
         function drawOutline(object) {
             ctx.beginPath();
@@ -76,7 +99,7 @@
             for (let new_index = index + 1; new_index < gameObjs.length; new_index++) {
                 let object2 = gameObjs[new_index];
 
-                console.log(areColliding(object1, object2));
+                // console.log(areColliding(object1, object2));
                 if (areColliding(object1, object2)) {
 
                     drawOutline(object1);
