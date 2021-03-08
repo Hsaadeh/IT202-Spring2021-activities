@@ -1,68 +1,95 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
+    <title>lab 8</title>
 
 
-  </head>
-  <body>
+</head>
+
+<body>
 
     <canvas id="c1" width="500" height="500"></canvas>
     <script>
 
-      let c = document.querySelector("#c1");
-      c.style.backgroundColor = "silver";
-      let ctx = c.getContext("2d");
+        let c = document.querySelector("#c1");
+        c.style.backgroundColor = "silver";
+        let ctx = c.getContext("2d");
 
-      // create objects per the lab activity
-      let gameObjs = [];
-      gameObjs.push( {x: 250, y: 250, radius: 25, color: "red" } )
-      gameObjs.push( {x: 275, y: 275, radius: 25, color: "green" } )
-      gameObjs.push( {x: 200, y: 300, radius: 25, color: "blue" } )
+
+        // array of colors to randomly be selected:
+        let colors = ["red", "green", "blue", "yellow", "orange", "brown"];
 
 
 
-      gameObjs.forEach( (obj) => {
-        ctx.beginPath()
-        ctx.arc(obj.x, obj.y, obj.radius, 0, Math.PI*2);
-        ctx.closePath();
-        ctx.fillStyle = obj.color;
-        ctx.fill();
-      });
-
-      // create a function named areColliding that accepts two objects and returns a boolen based on collision
-      // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
-      function areColliding(object1, object2) {
-          let delta_x = [object1].x - [object2].x;
-          let delta_y = [object1].y - [object2].y;
-          let distance = Math.sqrt(delta_x * delta_x + delta_y * delta_y);
-          
-          if (distance < [object1].radius + [object2].radius) {
-              return true;
-              console.log('COLLISION!');   
-          }
-      }
-
-      let index = 0;
-
-      for (index; index < gameObjs.length; index++) {
-          let obj1 = gameObjs[index];
-          let obj2 = gameObjs[index + 1];
-
-          areColliding(obj1, obj2);
-      }
+        // create objects per the lab activity
+        let gameObjs = [];
+        gameObjs.push({ x: 250, y: 250, radius: 25, color: "red" })
+        gameObjs.push({ x: 275, y: 275, radius: 25, color: "green" })
+        gameObjs.push({ x: 200, y: 300, radius: 25, color: "blue" })
 
 
-      // loop the objects to compare every pair
-      //    and if a pair are colliding, redraw them
-      //    with a white border
+        function drawOutline(object) {
+            ctx.beginPath();
+            ctx.arc(object.x, object.y, object.radius, 0, Math.PI * 2);
+            ctx.fillStyle = object.color;
+            ctx.strokeStyle = "white";
+            ctx.lineWidth = 4;
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+        }
+
+
+        gameObjs.forEach((obj) => {
+            ctx.beginPath()
+            ctx.arc(obj.x, obj.y, obj.radius, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.fillStyle = obj.color;
+            ctx.fill();
+        });
+
+        // create a function named areColliding that accepts two objects and returns a boolen based on collision
+        // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+
+        function areColliding(object1, object2) {
+            let delta_x = object1.x - object2.x;
+            let delta_y = object1.y - object2.y;
+
+            let distance = Math.sqrt((delta_x * delta_x) + (delta_y * delta_y));
+
+            if (distance < (object1.radius + object2.radius)) {
+                return true;
+            }
+            return false;
+        }
+
+
+        // loop the objects to compare every pair
+        //    and if a pair are colliding, redraw them
+        //    with a white border
+        for (let index = 0; index < gameObjs.length; index++) {
+            let object1 = gameObjs[index];
+
+            for (let new_index = index + 1; new_index < gameObjs.length; new_index++) {
+                let object2 = gameObjs[new_index];
+
+                console.log(areColliding(object1, object2));
+                if (areColliding(object1, object2)) {
+
+                    drawOutline(object1);
+                    drawOutline(object2);
+                }
+            }
+        }
 
 
       // once you get that working, update the code above to create 25 additional gameObjects with random x, y and color values; and push them to the array before the drawing and comparison
 
 
     </script>
-  </body>
+</body>
+
 </html>
