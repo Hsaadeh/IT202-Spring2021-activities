@@ -30,11 +30,13 @@
 
             for (let index = 0; index < voices.length; index++) {
                 let option = document.createElement('option');
-                option.textContent = voices[index].name + ' (' + voices[index].lang + ')';
+                // option.textContent = voices[index].name + ' (' + voices[index].lang + ')';
+                option.textContent = voices[index].name;
+                // option.id = "voiceOption";
 
-                if (voices[index].default) {
-                    option.textContent += ' -- DEFAULT';
-                }
+                // if (voices[index].default) {
+                //     option.textContent += ' -- DEFAULT';
+                // }
 
                 option.setAttribute('data-lang', voices[index].lang);
                 option.setAttribute('data-name', voices[index].name);
@@ -55,13 +57,20 @@
 
         document.querySelector("#speakButton").addEventListener("click", (event) => {
             let voices = speechSynthesis.getVoices();
-            let selectedVoice = document.querySelector("#text1Select").getAttribute("option");
+            // let selectedVoice = document.querySelector("#").value;
+            let select = document.querySelector("#text1Select");
+            let selectedVoice = select.options[select.selectedIndex].text;
+            // console.log(selectedVoice);
             let text1 = document.querySelector("#text1Input").value;
             let utterance = new SpeechSynthesisUtterance(text1);
 
             for (i = 0; i < voices.length; i++) {
+                // console.log("for looped")
+                // console.log(voices[i].name);
                 if (voices[i].name === selectedVoice) {
+                    // let utterance = new SpeechSynthesisUtterance(text1);
                     utterance.voice = voices[i];
+                    // console.log("entered if statement");
                     // speechSynthesis.speak(utterance);
                 }
             }
