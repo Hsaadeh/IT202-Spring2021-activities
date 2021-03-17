@@ -19,23 +19,23 @@
 
 
     <script>
-        function populateVoiceList() {
+             function populateVoiceList() {
             if (typeof speechSynthesis === 'undefined') {
                 return;
             }
 
-            var voices = speechSynthesis.getVoices();
+            let voices = speechSynthesis.getVoices();
 
-            for (var i = 0; i < voices.length; i++) {
-                var option = document.createElement('option');
-                option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+            for (let index = 0; index < voices.length; index++) {
+                let option = document.createElement('option');
+                option.textContent = voices[index].name + ' (' + voices[index].lang + ')';
 
-                if (voices[i].default) {
+                if (voices[index].default) {
                     option.textContent += ' -- DEFAULT';
                 }
 
-                option.setAttribute('data-lang', voices[i].lang);
-                option.setAttribute('data-name', voices[i].name);
+                option.setAttribute('data-lang', voices[index].lang);
+                option.setAttribute('data-name', voices[index].name);
                 document.querySelector("#text1Select").appendChild(option);
             }
         }
