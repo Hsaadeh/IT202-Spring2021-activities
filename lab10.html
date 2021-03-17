@@ -53,9 +53,20 @@
             document.querySelector("#speakButton").disabled = false;
         })
 
-        document.querySelector("#speakButton").addEventListener("click", (event) =>{
+        document.querySelector("#speakButton").addEventListener("click", (event) => {
+            let voices = speechSynthesis.getVoices();
+            let selectedVoice = document.querySelector("#text1Select").getAttribute("option");
             let text1 = document.querySelector("#text1Input").value;
             let utterance = new SpeechSynthesisUtterance(text1);
+
+            for (i = 0; i < voices.length; i++) {
+                if (voices[i].name === selectedVoice) {
+                    utterance.voice = voices[i];
+                    // speechSynthesis.speak(utterance);
+                }
+            }
+
+            // utterance.voice = selectedVoice;
             speechSynthesis.speak(utterance);
         })
 
