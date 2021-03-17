@@ -14,8 +14,10 @@
 <body>
 
     <textarea name="text1Input" id="text1Input" cols="30" rows="10"></textarea>
-    <select id="text1Select"></select>
-    <button type="button" name="text1Button" id="text1Button" disabled></button>
+    <select id="text1Select">
+        <option></option>
+    </select>
+    <button type="button" name="speakButton" id="speakButton" disabled>speak</button>
 
 
     <script>
@@ -44,6 +46,18 @@
         if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
             speechSynthesis.onvoiceschanged = populateVoiceList;
         }
+
+        // let select = document.querySelector("#text1Select");
+
+        document.querySelector("#text1Select").addEventListener("change", (event) => {
+            document.querySelector("#speakButton").disabled = false;
+        })
+
+        document.querySelector("#speakButton").addEventListener("click", (event) =>{
+            let text1 = document.querySelector("#text1Input").value;
+            let utterance = new SpeechSynthesisUtterance(text1);
+            speechSynthesis.speak(utterance);
+        })
 
 
 
