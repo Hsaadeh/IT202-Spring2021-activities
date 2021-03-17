@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
 
     </style>
 </head>
+
 <body>
 
     <textarea name="text1Input" id="text1Input" cols="30" rows="10"></textarea>
@@ -17,11 +19,33 @@
 
 
     <script>
-        // let speech = window.speechSynthesis;
-        // let voices = speech.getVoices();
-        // let voices = SpeechSynthesis.getVoices();
-        // console.log(voices);
+        function populateVoiceList() {
+            if (typeof speechSynthesis === 'undefined') {
+                return;
+            }
+
+            var voices = speechSynthesis.getVoices();
+
+            for (var i = 0; i < voices.length; i++) {
+                var option = document.createElement('option');
+                option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+
+                if (voices[i].default) {
+                    option.textContent += ' -- DEFAULT';
+                }
+
+                option.setAttribute('data-lang', voices[i].lang);
+                option.setAttribute('data-name', voices[i].name);
+                document.querySelector("#text1Select").appendChild(option);
+            }
+        }
+
+        populateVoiceList();
+        if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = populateVoiceList;
+        }
 
     </script>
 </body>
+
 </html>
